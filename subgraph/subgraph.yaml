@@ -1,0 +1,7 @@
+# LogersWallet Subgraph Manifest
+# Populated in Phase 6
+specVersion: 0.0.5
+description: LogersWallet — ERC-4337 smart wallet event indexing
+schema:
+  file: ./schema.graphql
+dataSources: []
