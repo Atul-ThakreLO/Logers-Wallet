@@ -1,28 +1,28 @@
 {
-  "name": "web",
-  "version": "0.1.0",
-  "type": "module",
+  "name": "@logers-wallet/web",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3000",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --max-warnings 0",
-    "check-types": "next typegen && tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next out"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "next": "16.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "@logers-wallet/sdk": "workspace:*",
+    "@logers-wallet/ui": "workspace:*",
+    "@logers-wallet/utils": "workspace:*",
+    "@logers-wallet/wagmi-config": "workspace:*",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "eslint": "^9.39.1",
-    "typescript": "5.9.2"
+    "@logers-wallet/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "name": "@logers-wallet/sdk",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./passkey": {
+      "types": "./src/passkey/index.ts",
+      "default": "./src/passkey/index.ts"
+    },
+    "./chain": {
+      "types": "./src/chain/index.ts",
+      "default": "./src/chain/index.ts"
+    },
+    "./graph": {
+      "types": "./src/graph/index.ts",
+      "default": "./src/graph/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@logers-wallet/contracts-abi": "workspace:*",
+    "@logers-wallet/utils": "workspace:*",
+    "viem": "^2.23.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@logers-wallet/typescript-config": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

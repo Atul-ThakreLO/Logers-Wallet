@@ -1,0 +1,14 @@
+{
+  "name": "@logers-wallet/docs",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "echo 'docs dev — setup in later phase'",
+    "build": "echo 'docs build — setup in later phase'",
+    "clean": "rm -rf .next out"
+  },
+  "devDependencies": {
+    "@logers-wallet/typescript-config": "workspace:*"
+  }
+}
