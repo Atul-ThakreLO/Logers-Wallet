@@ -1,41 +1,40 @@
-# ─── Dependencies ─────────────────────────────────────────────── #
+# Dependencies
 node_modules/
 .pnpm-store/
 
-# ─── Build outputs ───────────────────────────────────────────── #
-dist/
-build/
-*.tsbuildinfo
-
-# ─── Next.js ─────────────────────────────────────────────────── #
+# Build outputs
 .next/
+dist/
 out/
-
-# ─── Turbo ───────────────────────────────────────────────────── #
 .turbo/
 
-# ─── Foundry ─────────────────────────────────────────────────── #
+# Foundry
 contracts/out/
 contracts/cache/
-contracts/broadcast/
+contracts/lib/
+contracts/broadcast/*/
+!contracts/broadcast/.gitkeep
 
-# ─── Environment ─────────────────────────────────────────────── #
+# Subgraph
+subgraph/build/
+subgraph/generated/
+
+# Environment
 .env
 .env.local
 .env.*.local
 
-# ─── IDE ─────────────────────────────────────────────────────── #
-.vscode/settings.json
-.idea/
-*.swp
-*.swo
-*~
-
-# ─── OS ──────────────────────────────────────────────────────── #
+# OS
 .DS_Store
 Thumbs.db
 
-# ─── Misc ────────────────────────────────────────────────────── #
-*.log
+# IDE
+.vscode/settings.json
+.idea/
+
+# Coverage
 coverage/
-.nyc_output/
+lcov.info
+
+# Prisma
+apps/api/src/db/generated/

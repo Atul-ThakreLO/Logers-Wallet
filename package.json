@@ -2,28 +2,43 @@
   "name": "logers-wallet",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@9.6.0",
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "fmt": "biome check --write .",
-    "fmt:check": "biome check .",
+    "test": "turbo run test",
+    "format": "turbo run format",
     "clean": "turbo run clean && rm -rf node_modules",
+    "contracts:build": "cd contracts && forge build",
+    "contracts:test": "cd contracts && forge test -vvv",
+    "contracts:abi": "bun tooling/scripts/extract-abis.ts",
+    "deploy:contracts": "bash tooling/scripts/deploy-contracts.sh",
+    "dev:infra": "docker compose -f infra/docker/docker-compose.yml up -d postgres redis",
     "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "changeset publish",
-    "prepare": "husky"
+    "version": "changeset version",
+    "release": "turbo run build --filter=@logers/* && changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.27.12",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "turbo": "^2.4.4"
+    "turbo": "^2.0.14",
+    "@biomejs/biome": "^1.8.3",
+    "typescript": "^5.5.3",
+    "lint-staged": "^15.2.7",
+    "simple-git-hooks": "^2.11.1",
+    "@changesets/cli": "^2.27.7"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css,md}": ["biome check --write --no-errors-on-unmatched"]
+    "*.{ts,tsx}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "*.sol": ["bash -c 'cd contracts && forge fmt'"]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
   }
 }

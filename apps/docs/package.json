@@ -1,14 +1,25 @@
 {
-  "name": "@logers-wallet/docs",
+  "name": "@logers/docs",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
   "scripts": {
-    "dev": "echo 'docs dev — setup in later phase'",
-    "build": "echo 'docs build — setup in later phase'",
-    "clean": "rm -rf .next out"
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "echo 'No lint for docs'",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next"
+  },
+  "dependencies": {
+    "nextra": "^3.0.0",
+    "nextra-theme-docs": "^3.0.0",
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@logers-wallet/typescript-config": "workspace:*"
+    "@logers/typescript-config": "workspace:*",
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.3"
   }
 }

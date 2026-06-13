@@ -1,54 +1,15 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "tab",
-    "indentWidth": 2,
-    "lineWidth": 100
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "complexity": {
-        "noForEach": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "error"
-      },
-      "style": {
-        "noNonNullAssertion": "warn",
-        "useConst": "error"
-      }
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "always",
-      "trailingCommas": "all"
-    }
-  },
-  "json": {
-    "formatter": {
-      "indentStyle": "space",
-      "indentWidth": 2
-    }
-  },
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "extends": ["./packages/eslint-config/biome.json"],
   "files": {
     "ignore": [
-      "node_modules",
-      "dist",
-      ".next",
-      ".turbo",
-      "contracts/lib",
-      "contracts/out",
-      "contracts/cache",
-      "pnpm-lock.yaml",
-      "*.sol"
+      "node_modules/**",
+      ".next/**",
+      "dist/**",
+      "out/**",
+      "contracts/**",
+      "subgraph/generated/**",
+      "packages/contracts-abi/src/generated/**"
     ]
   }
 }

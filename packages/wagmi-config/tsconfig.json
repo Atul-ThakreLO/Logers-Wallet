@@ -1,11 +1,6 @@
 {
-  "extends": "@logers-wallet/typescript-config/library.json",
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
-  },
-  "include": ["src"],
+  "extends": "@logers/typescript-config/base",
+  "compilerOptions": { "outDir": "./dist", "rootDir": "./src" },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

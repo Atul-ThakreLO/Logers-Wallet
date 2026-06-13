@@ -1,8 +1,11 @@
 {
-  "name": "@logers-wallet/eslint-config",
-  "version": "0.0.0",
+  "name": "@logers/eslint-config",
+  "version": "0.0.1",
   "private": true,
-  "license": "MIT",
-  "main": "index.js",
-  "files": ["index.js"]
+  "exports": {
+    "./biome": "./biome.json"
+  },
+  "scripts": {
+    "lint": "echo 'No lint for config package'"
+  }
 }

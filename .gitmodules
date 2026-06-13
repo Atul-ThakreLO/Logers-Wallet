@@ -13,3 +13,9 @@
 [submodule "contracts/lib/p256-verifier"]
 	path = contracts/lib/p256-verifier
 	url = https://github.com/daimo-eth/p256-verifier
+[submodule "contracts/lib/solady"]
+	path = contracts/lib/solady
+	url = https://github.com/Vectorized/solady
+[submodule "contracts/lib/chainlink"]
+	path = contracts/lib/chainlink
+	url = https://github.com/smartcontractkit/chainlink

@@ -1,28 +1,40 @@
 {
-  "name": "@logers-wallet/api",
+  "name": "@logers/api",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
-  "type": "module",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "start": "bun run src/index.ts",
-    "build": "bun build src/index.ts --outdir dist --target bun",
+    "build": "bun build src/index.ts --outdir dist --target bun --sourcemap=external",
+    "start": "bun run dist/index.js",
+    "lint": "biome check src/",
     "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "db:push": "bunx prisma db push",
+    "db:generate": "bunx prisma generate",
+    "db:studio": "bunx prisma studio",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@logers-wallet/sdk": "workspace:*",
-    "@logers-wallet/utils": "workspace:*",
-    "elysia": "^1.2.0",
-    "@elysiajs/cors": "^1.1.0",
-    "@elysiajs/jwt": "^1.1.0",
-    "viem": "^2.23.0",
-    "zod": "^3.24.0"
+    "@logers/sdk": "workspace:*",
+    "@logers/utils": "workspace:*",
+    "@logers/contracts-abi": "workspace:*",
+    "elysia": "^1.1.7",
+    "@elysiajs/cors": "^1.1.1",
+    "@elysiajs/jwt": "^1.1.1",
+    "@elysiajs/swagger": "^1.1.2",
+    "@elysiajs/eden": "^1.1.2",
+    "@simplewebauthn/server": "^10.0.0",
+    "@prisma/client": "^5.17.0",
+    "viem": "^2.17.0",
+    "zod": "^3.23.8",
+    "ioredis": "^5.4.1",
+    "pino": "^9.3.1",
+    "pino-pretty": "^11.2.1"
   },
   "devDependencies": {
-    "@logers-wallet/typescript-config": "workspace:*",
-    "bun-types": "^1.2.0",
-    "typescript": "^5.7.3"
+    "@logers/typescript-config": "workspace:*",
+    "bun-types": "latest",
+    "typescript": "^5.5.3",
+    "prisma": "^5.17.0"
   }
 }

@@ -1,5 +1,9 @@
 {
-  "extends": "@logers-wallet/typescript-config/bun.json",
-  "include": ["src", "env.d.ts"],
+  "extends": "@logers/typescript-config/bun",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
