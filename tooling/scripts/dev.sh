@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-# ──────────────────────────────────────────────────────────────────────
-# LogersWallet — Dev Server Launcher
-# ──────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
-echo "🚀 Starting LogersWallet development environment..."
-echo "────────────────────────────────────────"
+echo "🚀 Starting LogersWallet dev stack..."
 
-# Ensure Docker services are running
-echo "🐳 Checking Docker services..."
-docker compose -f infra/docker/docker-compose.yml up -d
+# Start infrastructure first
+docker compose -f infra/docker/docker-compose.yml up -d postgres redis
+echo "✅ Postgres + Redis running"
 
-# Start turbo dev (all apps in parallel)
-echo "⚡ Starting all apps..."
-pnpm dev
+# Wait for postgres to be healthy
+echo "⏳ Waiting for Postgres..."
+until docker exec logers-postgres pg_isready -U logers -d logerswallet >/dev/null 2>&1; do
+  sleep 1
+done
+echo "✅ Postgres ready"
+
+# Run migrations
+echo "🗄️  Running Prisma migrations..."
+cd apps/api && bunx prisma db push --accept-data-loss && cd ../..
+
+# Start all apps via Turbo
+exec pnpm dev

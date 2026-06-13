@@ -1,27 +1,26 @@
 {
-  "name": "@logers-wallet/utils",
+  "name": "@logers/utils",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "biome check .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "viem": "^2.23.0"
+    "viem": "^2.17.0"
   },
   "devDependencies": {
-    "@logers-wallet/typescript-config": "workspace:*",
-    "typescript": "^5.7.3"
+    "@logers/typescript-config": "workspace:*",
+    "typescript": "^5.5.3"
   }
 }

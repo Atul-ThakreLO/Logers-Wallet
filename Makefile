@@ -1,57 +1,59 @@
-# ──────────────────────────────────────────────────────────────────────
-# LogersWallet Makefile
-# ──────────────────────────────────────────────────────────────────────
+.PHONY: setup dev build test lint clean contracts subgraph deploy
 
-.PHONY: install dev build lint fmt clean typecheck \
-        contracts-build contracts-test contracts-deploy \
-        docker-up docker-down setup
+# ── Setup ─────────────────────────────────────────────────────────────── #
+setup:
+	@echo "🚀 Setting up LogersWallet..."
+	@bash tooling/scripts/setup.sh
 
-# ─── General ─────────────────────────────────────────────────────── #
-
-install:
-	pnpm install
-
+# ── Development ───────────────────────────────────────────────────────── #
 dev:
-	pnpm run dev
+	@bash tooling/scripts/dev.sh
 
+dev-infra:
+	@docker compose -f infra/docker/docker-compose.yml up -d postgres redis
+
+# ── Build ─────────────────────────────────────────────────────────────── #
 build:
-	pnpm run build
+	@pnpm build
 
+build-contracts:
+	@cd contracts && forge build --sizes
+
+abi:
+	@cd contracts && forge build
+	@bun tooling/scripts/extract-abis.ts
+
+# ── Test ──────────────────────────────────────────────────────────────── #
+test:
+	@pnpm test
+
+test-contracts:
+	@cd contracts && forge test -vvv
+
+test-coverage:
+	@cd contracts && forge coverage --report lcov
+
+# ── Quality ───────────────────────────────────────────────────────────── #
 lint:
-	pnpm run lint
+	@pnpm lint
+	@cd contracts && forge fmt --check
 
-fmt:
-	pnpm run fmt
+format:
+	@pnpm format
+	@cd contracts && forge fmt
 
 typecheck:
-	pnpm run typecheck
+	@pnpm typecheck
 
+# ── Deploy ────────────────────────────────────────────────────────────── #
+deploy-contracts:
+	@bash tooling/scripts/deploy-contracts.sh
+
+deploy-subgraph:
+	@cd subgraph && graph deploy --studio logers-wallet
+
+# ── Clean ─────────────────────────────────────────────────────────────── #
 clean:
-	pnpm run clean
-
-# ─── Contracts ───────────────────────────────────────────────────── #
-
-contracts-build:
-	cd contracts && forge build
-
-contracts-test:
-	cd contracts && forge test -vvv
-
-contracts-fmt:
-	cd contracts && forge fmt
-
-contracts-deploy:
-	bash tooling/scripts/deploy-contracts.sh
-
-# ─── Docker ──────────────────────────────────────────────────────── #
-
-docker-up:
-	docker compose -f infra/docker/docker-compose.yml up -d
-
-docker-down:
-	docker compose -f infra/docker/docker-compose.yml down
-
-# ─── Setup ───────────────────────────────────────────────────────── #
-
-setup:
-	bash tooling/scripts/setup.sh
+	@pnpm clean
+	@cd contracts && forge clean
+	@docker compose -f infra/docker/docker-compose.yml down -v

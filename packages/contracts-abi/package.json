@@ -1,24 +1,27 @@
 {
-  "name": "@logers-wallet/contracts-abi",
+  "name": "@logers/contracts-abi",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    }
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./LogersAccount": "./src/generated/LogersAccount.abi.ts",
+    "./LogersAccountFactory": "./src/generated/LogersAccountFactory.abi.ts",
+    "./LogersPaymaster": "./src/generated/LogersPaymaster.abi.ts",
+    "./LogersPriceOracle": "./src/generated/LogersPriceOracle.abi.ts"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "echo 'contracts-abi: source package, no build needed'",
+    "generate": "bun ../../tooling/scripts/extract-abis.ts",
+    "lint": "biome check src/",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf src/generated/*.ts"
   },
   "devDependencies": {
-    "@logers-wallet/typescript-config": "workspace:*",
-    "typescript": "^5.7.3"
+    "@logers/typescript-config": "workspace:*",
+    "typescript": "^5.5.3"
   }
 }

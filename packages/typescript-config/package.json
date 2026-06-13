@@ -1,12 +1,13 @@
 {
-  "name": "@logers-wallet/typescript-config",
-  "version": "0.0.0",
+  "name": "@logers/typescript-config",
+  "version": "0.0.1",
   "private": true,
-  "license": "MIT",
-  "files": [
-    "base.json",
-    "nextjs.json",
-    "library.json",
-    "bun.json"
-  ]
+  "exports": {
+    "./base": "./base.json",
+    "./nextjs": "./nextjs.json",
+    "./bun": "./bun.json"
+  },
+  "scripts": {
+    "lint": "echo 'No lint for config package'"
+  }
 }

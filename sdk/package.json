@@ -1,42 +1,44 @@
 {
-  "name": "@logers-wallet/sdk",
+  "name": "@logers/sdk",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./passkey": {
-      "types": "./src/passkey/index.ts",
-      "default": "./src/passkey/index.ts"
+      "import": "./dist/passkey/index.js",
+      "types": "./dist/passkey/index.d.ts"
     },
     "./chain": {
-      "types": "./src/chain/index.ts",
-      "default": "./src/chain/index.ts"
+      "import": "./dist/chain/index.js",
+      "types": "./dist/chain/index.d.ts"
     },
     "./graph": {
-      "types": "./src/graph/index.ts",
-      "default": "./src/graph/index.ts"
+      "import": "./dist/graph/index.js",
+      "types": "./dist/graph/index.d.ts"
     }
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "biome check .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@logers-wallet/contracts-abi": "workspace:*",
-    "@logers-wallet/utils": "workspace:*",
-    "viem": "^2.23.0",
-    "zod": "^3.24.0"
+    "@logers/contracts-abi": "workspace:*",
+    "@logers/utils": "workspace:*",
+    "@logers/wagmi-config": "workspace:*",
+    "viem": "^2.17.0",
+    "zod": "^3.23.8",
+    "@simplewebauthn/browser": "^10.0.0",
+    "@simplewebauthn/types": "^10.0.0"
   },
   "devDependencies": {
-    "@logers-wallet/typescript-config": "workspace:*",
-    "typescript": "^5.7.3"
+    "@logers/typescript-config": "workspace:*",
+    "typescript": "^5.5.3"
   }
 }
