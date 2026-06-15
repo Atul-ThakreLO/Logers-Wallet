@@ -1,5 +1,3 @@
-/**
- * Passkey utilities: registration, authentication, credential parsing.
- * Populated in Phase 4.
- */
-export {};
+export * from "./encoding.js";
+export * from "./registration.js";
+export * from "./authentication.js";

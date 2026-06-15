@@ -32,13 +32,14 @@
     "@logers/contracts-abi": "workspace:*",
     "@logers/utils": "workspace:*",
     "@logers/wagmi-config": "workspace:*",
-    "viem": "^2.17.0",
-    "zod": "^3.23.8",
     "@simplewebauthn/browser": "^10.0.0",
-    "@simplewebauthn/types": "^10.0.0"
+    "@simplewebauthn/types": "^10.0.0",
+    "viem": "^2.17.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@logers/typescript-config": "workspace:*",
+    "@types/node": "^20.14.11",
     "typescript": "^5.5.3"
   }
 }
