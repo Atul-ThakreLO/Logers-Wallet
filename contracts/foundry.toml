@@ -4,6 +4,7 @@ out = "out"
 libs = ["lib"]
 optimizer = true
 optimizer_runs = 200
+via_ir = true
 solc_version = "0.8.25"
 ffi = true
 fs_permissions = [
@@ -12,11 +13,10 @@ fs_permissions = [
 ]
 remappings = [
   "@openzeppelin/=lib/openzeppelin-contracts/",
-  "@openzeppelin-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
-  "@account-abstraction/=lib/account-abstraction/",
+  "@openzeppelin-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+  "@account-abstraction/=lib/account-abstraction/contracts/",
   "@solady/=lib/solady/src/",
-  "@p256/=lib/p256-verifier/src/",
-  "@chainlink/=lib/chainlink/contracts/src/v0.8/",
+  "@chainlink/=src/",
 ]
 
 [profile.default.fuzz]
